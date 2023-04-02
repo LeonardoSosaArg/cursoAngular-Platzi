@@ -1,0 +1,75 @@
+<h1>Propery Binding</h1>
+<h3>{{parrafo}}</h3>
+<div class="container">
+  <button [disabled]="btnDisabled">Submit</button>
+  <button (click)="toggleButton()">Toggle</button>
+  <input type="text" [value]="name">
+  <p>Edad: {{age}}</p> <button class="button-increment" (click)="increment()">+</button> <button
+    class="button-decrement" (click)="decrement()">-</button>
+  <progress max="100" [value]="age"></progress>
+</div>
+<hr>
+<h1>Event Binding</h1>
+<div class="box" (scroll)="onScroll($event)">
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda numquam quae aspernatur, adipisci perspiciatis
+    rem eius perferendis magni alias temporibus repudiandae architecto ipsam reprehenderit eum ipsum optio. Expedita,
+    voluptatum placeat!</p>
+</div>
+<br>
+<p>{{name}}</p>
+<input type="text" [value]="name" (keyup)="changeName($event)">
+<hr>
+<h1>Ng Model</h1>
+<div class="container">
+  <p>Nombre: {{name}}</p>
+  <input type="text" required="" minlength="10" #nameInput="ngModel" [(ngModel)]="name">
+  <p>Valid: {{nameInput.valid}}</p>
+  <br>
+  <p>Edad: {{age}}</p>
+  <input type="number" required="" [min]="18" #ageInput="ngModel" [(ngModel)]="age">
+  <p>Valid: {{ageInput.valid}}</p>
+</div>
+<hr>
+<h1>ng If</h1>
+<ng-template #elseBlock>
+  <p>Bloque else</p>
+</ng-template>
+<div class="container" *ngIf="nameInput.valid && ageInput.valid; else elseBlock">
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat id est adipisci dolores sed architecto dolor nobis
+    iste quibusdam et similique quidem dignissimos commodi possimus, alias nihil repellendus, natus unde!</p>
+</div>
+<hr>
+<h1>ng For</h1>
+<input type="text" [(ngModel)]="newPlayer"> <button (click)="addPlayer(newPlayer)">Add Player</button>
+<ul>
+  <li *ngIf="players.length === 0">No existen players mostro</li>
+  <li *ngFor="let player of players; index as i">
+    {{player}} <button (click)="deletePlayer(i)">Delete</button>
+  </li>
+</ul>
+<hr>
+<div class="container-products">
+  <div class="product" *ngFor="let item of products">
+    <img class="image-product" [src]="item.image">
+    <h2>Precio: ${{item.price}}</h2>
+    <p>Nombre: {{item.name}}</p>
+  </div>
+</div>
+<hr>
+<h1>ng Switch</h1>
+<div [ngSwitch]="newPlayer">
+  <input type="text" [(ngModel)]="newPlayer">
+  <p *ngSwitchCase="'leo'" style="background-color: aqua;">
+    {{newPlayer}}
+  </p>
+  <p *ngSwitchCase="'paulo'" style="background-color: burlywood;">
+    {{newPlayer}}
+  </p>
+  <p *ngSwitchCase="'julian'" style="background-color: crimson;">
+    {{newPlayer}}
+  </p>
+  <p *ngSwitchDefault="">No hace match</p>
+</div>
+<hr>
+<img [src]="img">
+<router-outlet></router-outlet>
