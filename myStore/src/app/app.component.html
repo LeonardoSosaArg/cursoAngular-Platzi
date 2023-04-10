@@ -1,0 +1,3 @@
+<p>My Input Parent <input type="text" [(ngModel)]="imgParent"></p>
+<app-img (loaded)="onLoaded($event)" [img]="imgParent"></app-img>
+<app-product [product]="item" *ngFor="let item of products"></app-product>

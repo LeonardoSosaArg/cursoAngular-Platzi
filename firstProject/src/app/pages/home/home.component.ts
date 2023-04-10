@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Product } from './models/product';
+import { Product } from 'src/app/models/product';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent {
+export class HomeComponent {
+
   title = 'firstProject';
   parrafo = "El property binding, se utiliza para manejar las propiedades de html."
   + "A diferencia de la interpolación que se utiliza para definir contenidos en las etiquetas"
