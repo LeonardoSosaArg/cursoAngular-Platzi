@@ -7,7 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewIni
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
-  @Input() img:string = '';
+
+  img:string = '';
+  @Input('img')
+  set changeImg(newImg: string) {
+    this.img = newImg;
+    // console.log('cambio el input de imagen', this.img)
+  }
   @Output() loaded = new EventEmitter<string>();
 
   imageDefault = "./assets/img/default-image.jpg";
@@ -41,7 +47,6 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imgLoaded(){
-    console.log('img loaded');
     this.loaded.emit(this.img);
   }
 

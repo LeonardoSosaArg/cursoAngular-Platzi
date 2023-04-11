@@ -1,0 +1,9 @@
+<p> Cantidad productos: {{myShoppingCart.length}}</p>
+<p>Total: ${{total}}</p>
+<div class="products--grid">
+    <app-product 
+    [product]="item" 
+    *ngFor="let item of products"
+    (addedProduct)="onAddToShoppingCart($event)">
+</app-product>
+</div>

@@ -6,12 +6,15 @@ import { Product } from '../models/product';
 })
 export class ProductsService {
 
+
+  private myShoppingCart: Product[] = [];
+
   products: Product[] = [
     {
       id:"1",
       name:"Gabinete RGB",
       price: 230,
-      image: "./assets/img/gabinete-rgb.jpg"
+      image: "./assets/img/gabinete2.jpg"
     },
     {
       id:"2",
@@ -76,13 +79,26 @@ export class ProductsService {
       id:"12",
       name:"WebCam Logitech",
       price: 210,
-      image: "./assets/img/webcam-logi.jpg"
+      image: "./assets/img/webcam2.jpg"
     }
   ];
 
   constructor() { }
 
+  getShoppingCart(){
+    return this.myShoppingCart;
+  }
+
   getProducts(): Product[]{
     return this.products;
   }
+
+  addProduct(product: Product){
+    this.myShoppingCart.push(product);
+  }
+
+  getTotal() : number{
+    return this.myShoppingCart.reduce((sum, item) => sum + item.price, 0);
+  }
+
 }

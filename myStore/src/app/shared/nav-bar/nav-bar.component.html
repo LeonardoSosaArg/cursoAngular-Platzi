@@ -1,0 +1,47 @@
+<div class="show-mobile">
+  <div>
+    <button (click)="toggleMenu()">
+      <img src="./assets/svg/icon_menu.svg" alt="menu">
+    </button>
+    <a href="">
+      <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
+    </a>
+    <a href="">
+      <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+    </a>
+  </div>
+  <div class="side-menu" [class.active]="activeMenu">
+    <div class="items-side">
+      <button (click)="toggleMenu()"><img src="./assets/img/marca-de-la-cruz.png" alt="cruz"></button>
+      <ul>
+        <li><a href="">All</a></li>
+        <li><a href="">Accesories</a></li>
+        <li><a href="">Wireless</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="hide-mobile">
+  <div>
+    <nav>
+      <a class="logo" href="">
+        <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
+      </a>
+      <ul>
+        <li><a href="">All</a></li>
+        <li><a href="">Accesories</a></li>
+        <li><a href="">Wireless</a></li>
+      </ul>
+    </nav>
+    <div class="info">
+      <div class="account">
+        leoososa91@gmail.com
+      </div>
+      <div>
+        <a href="">
+          <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -7,6 +7,7 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+
   
   @Input() product: Product = {
     id:'',
@@ -14,9 +15,14 @@ export class ProductComponent implements OnInit {
     price: 0,
     image: ''
   };
+  @Output() addedProduct = new EventEmitter<Product>();
 
   ngOnInit(): void {
     
   }
+
+  onAddToCart() {
+    this.addedProduct.emit(this.product);
+    }
 
 }
