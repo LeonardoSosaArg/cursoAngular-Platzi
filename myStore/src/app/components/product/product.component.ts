@@ -4,25 +4,27 @@ import { Product } from 'src/app/models/product';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit {
-
-  
+export class ProductComponent {
   @Input() product: Product = {
-    id:'',
-    name: '',
+    id: 0,
+    title: '',
     price: 0,
-    image: ''
+    description: '',
+    category: { id: 0, name: '', typeImg: '' },
+    images: [],
   };
   @Output() addedProduct = new EventEmitter<Product>();
-
-  ngOnInit(): void {
-    
-  }
+  @Output() showProduct = new EventEmitter<string>();
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
-    }
+  }
+
+  showDetail() {
+    this.showProduct.emit(this.product.id.toString())
+  }
+
 
 }

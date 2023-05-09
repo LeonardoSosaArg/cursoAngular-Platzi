@@ -10,8 +10,6 @@ export class AppComponent {
   // https://picsum.photos/200
   // imgParent = 'https://www.w3schools.com/howto/img_avatar.png';
 
-  constructor() {
-  }
 
   onLoaded(img: string){
     console.log(img);

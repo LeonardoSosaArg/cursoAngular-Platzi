@@ -1,9 +1,30 @@
-<p> Cantidad productos: {{myShoppingCart.length}}</p>
+<p>Cantidad productos: {{myShoppingCart.length}}</p>
+<hr>
 <p>Total: ${{total}}</p>
+<hr>
+<p>Fecha Actual: {{today | date:'dd/MM/yyyy'}}</p>
+<hr>
+<!-- LIBRERIA DE FECHAS = npm i date-fns -->
+<p appRestaltador>Última compra: {{fechaUltimaCompra | timeAgo}}</p>
+<hr>
+<button (click)="toggleProductDetail()">Open</button>
 <div class="products--grid">
-    <app-product 
+    <app-product style="padding: 1rem; display: flex;" 
     [product]="item" 
     *ngFor="let item of products"
-    (addedProduct)="onAddToShoppingCart($event)">
+    (addedProduct)="onAddToShoppingCart($event)"
+    (showProduct)="onShowDetail($event)">
 </app-product>
+</div>
+<div class="product-detail" [class.active]="showProductDetail">
+    <div *ngIf="productSeleccionado">
+        <button (click)="toggleProductDetail()">Close</button>
+        <h1>{{productSeleccionado.title}}</h1>
+        <swiper [slidesPerView]="1">
+            <ng-template swiperSlide="" *ngFor="let img of productSeleccionado.images">
+                <img [src]="img">
+            </ng-template>
+        </swiper>
+        <h1>{{productSeleccionado.description}}</h1>
+    </div>
 </div>

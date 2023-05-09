@@ -9,18 +9,29 @@ import { ProductComponent } from './components/product/product.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { RestaltadorDirective } from './directives/restaltador.directive';
+import { SwiperModule } from 'swiper/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
     ImgComponent,
     ProductComponent,
     ListProductsComponent,
-    NavBarComponent
+    NavBarComponent,
+    ReversePipe,
+    TimeAgoPipe,
+    RestaltadorDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

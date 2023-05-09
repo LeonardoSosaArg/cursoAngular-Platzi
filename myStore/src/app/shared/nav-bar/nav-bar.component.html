@@ -8,8 +8,10 @@
     </a>
     <a href="">
       <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+      <span class="counter">{{contador}}</span>
     </a>
   </div>
+  
   <div class="side-menu" [class.active]="activeMenu">
     <div class="items-side">
       <button (click)="toggleMenu()"><img src="./assets/img/marca-de-la-cruz.png" alt="cruz"></button>
@@ -39,8 +41,9 @@
       </div>
       <div>
         <a href="">
-          <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+          <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">     
         </a>
+        <span class="counter">{{contador}}</span>
       </div>
     </div>
   </div>
