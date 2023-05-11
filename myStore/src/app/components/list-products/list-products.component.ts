@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductCreateDto } from 'src/app/models/productCreateDto';
+import { ProductUpdateDto } from 'src/app/models/productUpdateDto';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -57,13 +58,24 @@ export class ListProductsComponent implements OnInit {
     const product : ProductCreateDto = {
        title: 'new Product',
        description: 'descripcion descripcion descripcion',
-       images: [''],
+       images: [`https://placeimg.com/640/480/any?random=${Math.random()}`],
        price: 1000,
        categoryId: 1
     }
     this.productService.createProduct(product).subscribe(data => {
-      console.log(data);
+      //INSERTAMOS NUESTRO PRODUCTO EN LA 1ERA POSICION DEL ARRAY
+      this.products.unshift(data);
     });
+  }
+
+  updateProduct(){
+    const changes: ProductUpdateDto = {
+      title: 'title editado'
+    }
+    const id = this.productSeleccionado.id;
+    this.productService.updateProudct(id, changes).subscribe(data => {
+      console.log(data);
+    })
   }
 
 }

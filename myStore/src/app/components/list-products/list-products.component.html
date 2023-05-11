@@ -7,7 +7,7 @@
 <!-- LIBRERIA DE FECHAS = npm i date-fns -->
 <p appRestaltador>Última compra: {{fechaUltimaCompra | timeAgo}}</p>
 <hr>
-<button (click)="toggleProductDetail()">Open</button>
+<button (click)="createNewProduct()">Create</button>
 <div class="products--grid">
     <app-product style="padding: 1rem; display: flex;" 
     [product]="item" 
@@ -26,5 +26,6 @@
             </ng-template>
         </swiper>
         <h1>{{productSeleccionado.description}}</h1>
+        <button (click)="updateProduct()">Edit</button>
     </div>
 </div>

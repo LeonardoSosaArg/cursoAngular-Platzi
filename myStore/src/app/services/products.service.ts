@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductCreateDto } from '../models/productCreateDto';
+import { ProductUpdateDto } from '../models/productUpdateDto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,15 @@ export class ProductsService {
     return this.http.get<Product>(this.urlBase + 'products/' + id);
   }
 
-  createProduct(product: ProductCreateDto){
-    return this.http.post<ProductCreateDto>(this.urlBase + 'products' , product);
+  createProduct(productDto: ProductCreateDto){
+    return this.http.post<Product>(this.urlBase + 'products' , productDto);
+  }
+
+  //LA DIFERENCIA ENTRE PUT Y PATCH
+  //PUT ENVIA TODO EL OBJETO, AUN SI MODIFICAMOS UN SOLO CAMPO
+  //PATCH ENVIA SOLO EL CAMPO QUE MODIFICADMOS
+  updateProudct(id : number ,updateDto: ProductUpdateDto){
+    return this.http.put<Product>(`${this.urlBase}products/${id}` , updateDto);
   }
 
 }
