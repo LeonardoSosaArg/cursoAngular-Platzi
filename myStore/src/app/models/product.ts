@@ -1,8 +1,8 @@
 export interface Category {
-    id: number;
-    name: string;
-    typeImg: string;
-  }
+  id: number;
+  name: string;
+  typeImg: string;
+}
 export interface Product {
   id: number;
   title: string;
@@ -10,5 +10,5 @@ export interface Product {
   description: string;
   category: Category;
   images: string[];
+  impuestos?: number;
 }
-

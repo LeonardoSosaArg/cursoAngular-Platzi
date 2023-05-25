@@ -16,7 +16,8 @@
     <div class="items-side">
       <button (click)="toggleMenu()"><img src="./assets/img/marca-de-la-cruz.png" alt="cruz"></button>
       <ul>
-        <li><a href="">All</a></li>
+        <li><a (click)="navigateTo('login')">Login</a></li>
+        <li><a (click)="navigateTo('list-products')">All</a></li>
         <li><a href="">Accesories</a></li>
         <li><a href="">Wireless</a></li>
       </ul>
@@ -30,14 +31,16 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li><a href="">All</a></li>
+        <li><a (click)="navigateTo('login')">Login</a></li>
+        <li><a (click)="navigateTo('list-products')">All</a></li>
         <li><a href="">Accesories</a></li>
         <li><a href="">Wireless</a></li>
       </ul>
     </nav>
     <div class="info">
       <div class="account">
-        leoososa91@gmail.com
+        <button *ngIf="!profile; else elseBlock" class="btn btn-success" (click)="login()">Ingresar</button>
+        <ng-template #elseBlock>{{profile?.name}}</ng-template>
       </div>
       <div>
         <a href="">

@@ -1,0 +1,13 @@
+IMPORTANTE !
+
+Rigth now - Curso de Consumo de Apis Rest
+
+PLATZI FUNDAMENTOS DE ANGULAR
+Video 20  - Hosting con FireBase
+
+Request = Peticion
+
+TypeBearerToken
+
+LIBRERIA PARA GUARDAR ARCHIVOS npm i file-saver
+
