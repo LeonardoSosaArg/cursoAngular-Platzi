@@ -1,21 +1,37 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { ListProductsComponent } from './components/list-products/list-products.component';
-import { CreateUserComponent } from './components/create-user/create-user.component';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { CustomPreloadService } from './services/custom-preload.service';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'list-products', component: ListProductsComponent},
-  {path: 'create-user', component: CreateUserComponent},
+  {
+    path: '', //IMPORTAMOS NUESTRO NUEVO MODULO WEBSITE
+    loadChildren: () =>
+      import('./website/website.module').then((m) => m.WebsiteModule),
+    //ESPECIFICAMOS LA DATA Y EL PRELOAD, PARA QUE EL SERVICE HAGA EL PREOLOAD DE ESTE MODULO
+    data: {
+      preload: true,
+    },
+  },
+  {
+    path: 'cms', //IMPORTAMOS NUESTRO NUEVO MODULO
+    loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
+  },
   {
     path: '**',
-    redirectTo: 'list-products'
-  }
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      //HABILITA LA PRECARGA DE LOS MODULOS, DESPUES DE HACER LA CARGA DEL MODULO INICIAL
+      //preloadingStrategy: PreloadAllModules,
+      //SERVICIO QUE HABILITA LA PRECARGA DE MODULOS ESPECIFICOS
+      preloadingStrategy: CustomPreloadService
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

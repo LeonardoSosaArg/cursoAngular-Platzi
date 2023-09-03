@@ -31,6 +31,17 @@ export class ProductsService {
     );
   }
 
+  getProductsByCategory(id: any, limit?: number, offset?: number){
+    let params = new HttpParams();
+    if (limit && offset != null) {
+      params = params.set('limit',limit);
+      params = params.set('offset', offset)
+    }
+    return this.http.get<Product[]>(`${this.urlBase}categories/${id}/products`, {
+      params
+    });
+  }
+
   readAndUpdate(id: any, dto: ProductUpdateDto){
     //EJECUTAMOS LOS DOS OBSERVABLES Y OBTENEMOS SUS RESPUESTAS AL MISMO TIEMPO
     return zip(//CUANDO NECESITAS EJECUTAR LOS DOS OBSERVABLES AL MISMO TIEMPO
@@ -51,9 +62,9 @@ export class ProductsService {
           return throwError(() => new Error('El producto no existe.'));
         }
         if (error.status == HttpStatusCode.Unauthorized) {
-          return throwError('Usuario no autorizado para ejecutar la petición.');
+          return throwError(() => new Error('Usuario no autorizado para ejecutar la petición.'));
         }
-        return throwError('Ups algó salio mal.');
+        return throwError(() => new Error('Ups algó salio mal.'));
       })
     )
   }
