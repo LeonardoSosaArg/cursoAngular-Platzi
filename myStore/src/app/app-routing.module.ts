@@ -4,10 +4,11 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { CustomPreloadService } from './services/custom-preload.service';
 //PARA CARCA DE MODULOS ESPECIFICOS SEGUN EL TIPO DE USUARIO
 import { QuicklinkStrategy } from 'ngx-quicklink';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
-    path: '', //IMPORTAMOS NUESTRO NUEVO MODULO WEBSITE
+    path: '', //IMPORTAMOS MODULO WEBSITE
     loadChildren: () =>
       import('./website/website.module').then((m) => m.WebsiteModule),
     //ESPECIFICAMOS LA DATA Y EL PRELOAD, PARA QUE EL SERVICE HAGA EL PREOLOAD DE ESTE MODULO
@@ -16,7 +17,8 @@ const routes: Routes = [
     },
   },
   {
-    path: 'cms', //IMPORTAMOS NUESTRO NUEVO MODULO
+    path: 'cms', //IMPORTAMOS MODULO ADMIN
+    canActivate: [AdminGuard],
     loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
   },
   {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService  } from 'src/app/services/auth.service';
 
@@ -11,7 +12,7 @@ export class ProfileComponent {
 
   user: User | null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
 
     // this.authService.getProfile().subscribe(data => {
     //   this.user = data;
@@ -23,5 +24,8 @@ export class ProfileComponent {
 
   }
 
+  goToCms(){
+    this.router.navigate(['/cms']);
+  }
 
 }

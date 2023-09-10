@@ -14,7 +14,7 @@ import { User } from 'src/app/models/user';
 export class LoginComponent implements OnInit {
 
   @Output() userLogin = new EventEmitter<User>();
-  
+
   formulario: FormGroup;
   usuarioLogin = {
     email: '',
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
 
     if (this.formulario.valid) {
       this.authService
-        .login(this.usuarioLogin.email, this.usuarioLogin.password)
+        .loginAndGet(this.usuarioLogin.email, this.usuarioLogin.password)
         .subscribe({
           next: (data) => {
             console.log(data);
@@ -78,6 +78,7 @@ export class LoginComponent implements OnInit {
               confirmButtonText: 'Accept',
             });
             this.getProfile();
+            this.router.navigate(['/profile']);
           },
           error: (data) => {
             Swal.fire({
