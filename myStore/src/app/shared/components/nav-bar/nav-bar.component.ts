@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { StoreService } from 'src/app/services/store.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,13 +22,15 @@ export class NavBarComponent implements OnInit {
 
   constructor(private storeService: StoreService, private router: Router, private authService: AuthService,
     private categoryService: CategoryService) {}
-  
+
     ngOnInit(): void {
     this.storeService.myCart$.subscribe((products) => {
       this.contador = products.length;
     });
     this.getAllCategories();
-    
+    this.authService.user$.subscribe( data => {
+      this.profile = data;
+    })
   }
 
   toggleMenu() {
@@ -47,20 +50,20 @@ export class NavBarComponent implements OnInit {
 
 
   login(){
-    this.authService.loginAndGet('leo30@mail.com','3103')
-    .subscribe(user => {
-      this.profile = user;
-      // this.token = localStorage.getItem('token');
-      console.log(user)
+    // this.authService.loginAndGet('leo30@mail.com','3103')
+    // .subscribe(user => {
+    //   this.profile = user;
+    //   console.log(user)
+    // });
+    this.authService.loginAndGet('john@mail.com','changeme')
+    .subscribe(() => {
+      this.router.navigate(['/profile']);
     });
   }
 
-  // getProfile(token: any){
-  //   this.authService.getProfile(token)
-  //   .subscribe(user => {
-  //     this.profile = user;
-  //     console.log(this.profile)
-  //   })
-  // }
+  logout(){
+    this.authService.logout();
+    this.profile = null;
+  }
 
 }

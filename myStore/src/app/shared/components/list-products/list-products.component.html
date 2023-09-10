@@ -1,3 +1,4 @@
+<div class="p-3">
 <p>Cantidad productos: {{myShoppingCart.length}}</p>
 <hr>
 <p>Total: ${{total}}</p>
@@ -12,9 +13,10 @@
 <button class="btn btn-dark" style="margin-right: 5px;" (click)="download()">Download</button>
 <input class="form-control mt-3 mb-3" type="file" (change)="onUpload($event)">
 <img *ngIf="imagenRespuesta" [src]="imagenRespuesta" width="400">
+</div>
 <div class="products--grid">
-    <app-product style="padding: 1rem; display: flex;" 
-    [product]="item" 
+    <app-product style="padding: 1rem; display: flex;"
+    [product]="item"
     *ngFor="let item of products"
     (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="onShowDetail($event)">

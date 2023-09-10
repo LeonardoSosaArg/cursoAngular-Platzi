@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { enviroment } from 'src/enviroments/enviroment';
 import { User } from '../models/user';
-import { switchMap, tap } from 'rxjs';
+import { BehaviorSubject, switchMap, tap } from 'rxjs';
 import { TokenService } from './token.service';
 import { addTokenHeader } from '../interceptors/token.interceptor';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,12 @@ import { addTokenHeader } from '../interceptors/token.interceptor';
 export class AuthService {
 
   private urlBase = `${enviroment.API_URL}auth`;
+  //OBSERVABLE PARA CONSULTAR CONTINUAMENTE EL ESTADO DEL USUARIO SI ESTA LOGUEADO
+  private user = new BehaviorSubject<User | null>(null); //ESTADO INICIAL NULL
+  //ESCUCHAR ACTIVAMENTE CAMBIO CON EL OBSERVABLE
+  user$ = this.user.asObservable();
 
-  constructor(private http: HttpClient, private tokenService: TokenService) { }
+  constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) { }
 
   login(email: string, password: string){
     return this.http.post<any>(`${this.urlBase}/login`,{email,password})
@@ -22,20 +27,16 @@ export class AuthService {
     );
   }
 
-  // getProfile(token: string){
-  //   // const headers = new HttpHeaders();
-  //   // headers.set('Authorization',`Bearer ${token}`);
-  //   console.log(token)
-  //   return this.http.get<User>(`${this.urlBase}/profile` , {
-  //     headers : {
-  //       Authorization: `Bearer ${token}`
-  //       //'Content-type' : 'application/json'
-  //     }
-  //   });
-  // }
+  logout(){
+    this.tokenService.removeToken();
+    this.router.navigate(['/home']);
+  }
 
   getProfile(){
-    return this.http.get<User>(`${this.urlBase}/profile` , {context : addTokenHeader()});
+    return this.http.get<User>(`${this.urlBase}/profile` , {context : addTokenHeader()}).pipe(
+      //SETEAMOS EL USER AL OBSERVABLE, UNA VEZ QUE INICIAMOS SESIÓN
+      tap(user => this.user.next(user))
+    );
   }
 
   loginAndGet(email : string, password : string){

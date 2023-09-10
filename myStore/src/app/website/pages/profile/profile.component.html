@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<section *ngIf="user">
+  <div class="container mt-5">
+    <h2>My Profile</h2>
+    <hr>
+    <p>Nombre: {{user.name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Role: {{user.role || 'customer'}}</p>
+  </div>
+</section>

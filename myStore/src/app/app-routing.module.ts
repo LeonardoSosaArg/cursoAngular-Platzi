@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { CustomPreloadService } from './services/custom-preload.service';
+//PARA CARCA DE MODULOS ESPECIFICOS SEGUN EL TIPO DE USUARIO
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   {
@@ -26,10 +28,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      //HABILITA LA PRECARGA DE LOS MODULOS, DESPUES DE HACER LA CARGA DEL MODULO INICIAL
+      //HABILITA LA PRECARGA DE TODOS LOS MODULOS, DESPUES DE HACER LA CARGA DEL MODULO INICIAL
       //preloadingStrategy: PreloadAllModules,
       //SERVICIO QUE HABILITA LA PRECARGA DE MODULOS ESPECIFICOS
-      preloadingStrategy: CustomPreloadService
+      //preloadingStrategy: CustomPreloadService
+      //SERVICIO QUE HABILITA LA PRECARGA DE MODULOS ESPECIFICOS SEGUN EL TIPO DE USUARIO
+      preloadingStrategy: QuicklinkStrategy
     }),
   ],
   exports: [RouterModule],

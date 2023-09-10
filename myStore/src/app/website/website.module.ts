@@ -13,6 +13,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { SwiperModule } from 'swiper/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { SharedModule } from '../shared/shared.module';
     WebsiteRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    SwiperModule
+    SwiperModule,
+    //importamos el QuickLinkModulo para habilitar la precarga de modulos segun usuario
+    QuicklinkModule
   ],
 })
 export class WebsiteModule {}
