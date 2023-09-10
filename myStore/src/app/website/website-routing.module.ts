@@ -11,6 +11,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { LayoutComponent } from './components/layout/layout.component';
 import { ListProductsComponent } from '../shared/components/list-products/list-products.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { ExitGuard } from '../guards/exit.guard';
 
 const routes: Routes = [
   {
@@ -34,7 +35,9 @@ const routes: Routes = [
       { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent},
       { path: 'login', component: LoginComponent },
       { path: 'list-products', component: ListProductsComponent },
-      { path: 'create-user', component: CreateUserComponent },
+      { path: 'create-user',
+      canDeactivate: [ExitGuard],//GUARD PARA NO PERMITIR SALIR DE LA RUTA
+      component: CreateUserComponent },
       { path: 'product/:id', component: ProductDetailComponent }
     ],
   },

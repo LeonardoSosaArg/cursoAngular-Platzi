@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OnExit } from 'src/app/guards/exit.guard';
 import { CreateUserDto } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -11,11 +12,11 @@ import Swal from 'sweetalert2';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent implements OnInit, OnExit {
 
   formulario: FormGroup;
   usuario: CreateUserDto;
-  
+
   constructor(
     private authService: AuthService,
     private userService: UsersService,
@@ -77,6 +78,11 @@ export class CreateUserComponent implements OnInit {
 
   get nombreNoValido() {
     return this.formulario.get('name')?.invalid && this.formulario.get('name')?.touched
+  }
+
+  onExit(){
+    const rta = confirm('Estás seguro que deseas salir?');
+    return rta;
   }
 
 }
