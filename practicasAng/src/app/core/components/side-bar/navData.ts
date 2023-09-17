@@ -1,37 +1,29 @@
 export const navBarData = [
   {
-    routerlink: 'dashboard',
+    routerLink: 'dashboard',
     icon: 'fal fa-home',
-    label: 'Dashboard'
+    label: 'Dashboard',
   },
   {
-    routerlink: 'products',
+    routerLink: 'products',
     icon: 'fal fa-box-open',
-    label: 'Products'
+    label: 'Products',
   },
+  { routerLink: 'stadistics', icon: 'fal fa-chart-bar', label: 'Stadisticts' },
   {
-    routerlink: 'stadistics',
-    icon: 'fal fa-chart-bar',
-    label: 'Stadisticts'
-  },
-  {
-    routerlink: 'coupens',
+    routerLink: 'coupens',
     icon: 'fal fa-tags',
-    label: 'Coupens'
+    label: 'Coupens',
   },
+  { routerLink: 'pages', icon: 'fal fa-file', label: 'Pages' },
   {
-    routerlink: 'pages',
-    icon: 'fal fa-file',
-    label: 'Pages'
-  },
-  {
-    routerlink: 'media',
+    routerLink: 'media',
     icon: 'fal fa-camera',
-    label: 'Media'
+    label: 'Media',
   },
   {
-    routerlink: 'settings',
+    routerLink: 'settings',
     icon: 'fal fa-cog',
-    label: 'Settings'
-  }
+    label: 'Settings',
+  },
 ];

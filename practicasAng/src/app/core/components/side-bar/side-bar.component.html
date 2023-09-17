@@ -1,4 +1,4 @@
-<section class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
     <button class="logo" (click)="toogleCollapse()">A</button>
     <div class="logo-text" *ngIf="!collapsed">Angular</div>
@@ -8,11 +8,11 @@
   </div>
   <ul class="sidenav-nav">
     <li class="sidenav-nav-item" *ngFor="let item of navData">
-      <a class="sidenav-nav-link" [routerLink]="item.routerlink" routerLinkActive="active"
+      <a class="sidenav-nav-link" [routerLink]="[item.routerLink]" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}">
         <i class="sidenav-link-icon" [class]="item.icon"></i>
         <span class="sidenav-link-text" *ngIf="!collapsed">{{item.label}}</span>
       </a>
     </li>
   </ul>
-</section>
+</div>
