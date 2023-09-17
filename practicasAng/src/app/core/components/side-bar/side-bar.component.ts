@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navBarData } from './navData';
 import { Router } from '@angular/router';
 
@@ -17,14 +17,23 @@ interface NavItem {
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss'],
 })
-export class SideBarComponent {
+export class SideBarComponent implements OnInit{
+
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   navData: NavItem[] = navBarData;
   collapsed = false;
   screenWidth = 0;
 
   constructor(private router: Router) {
-    console.log(this.navData);
+    this.screenWidth = window.innerWidth;
+  }
+
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+    this.onToggleSideNav.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth,
+    });
   }
 
   toogleCollapse() {
@@ -43,12 +52,4 @@ export class SideBarComponent {
     });
   }
 
-  navigateTo(param: any) {
-    if (param != '') {
-      const isTactile = window.screen.width < 900;
-      if (isTactile) {
-      }
-      this.router.navigateByUrl(param);
-    }
-  }
 }
