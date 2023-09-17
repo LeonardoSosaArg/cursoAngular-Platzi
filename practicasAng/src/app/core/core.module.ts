@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { BodyComponent } from './components/body/body.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -9,9 +10,9 @@ import { CoupensComponent } from './components/coupens/coupens.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { MediaComponent } from './components/media/media.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { RouterModule } from '@angular/router';
-
-
+import { AppModule } from '../app.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     SideBarComponent,
