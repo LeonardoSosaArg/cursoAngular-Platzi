@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import {
   animate,
   animation,
+  keyframes,
   style,
   transition,
   trigger,
@@ -40,6 +41,12 @@ interface NavItem {
         animate('350ms', style({ opacity: 0 })),
       ]),
     ]),
+    trigger('rotate', [
+      transition(':enter', [
+        animate('1000ms'),
+        //keyframes({style})
+      ])
+    ])
   ],
 })
 export class SideBarComponent implements OnInit {

@@ -1,0 +1,51 @@
+// - ANIMATIONS
+
+@keyframes vertical-fade-in {
+  from {
+      transform: translateX(-50%) translateY(3rem);
+      opacity: 0;
+  }
+
+  to {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes horizontal-fade-in {
+  from {
+      transform: translateX(-10rem);
+      opacity: 0;
+  }
+
+  to {
+      transform: translateX(0) ;
+      opacity: 1;
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+      visibility: hidden;
+      opacity: 0;
+  }
+
+  to {
+      visibility: visible;
+      opacity: 1;
+  }
+}
+
+@keyframes popup-in {
+  from {
+      visibility: hidden;
+      opacity: 0;
+      transform: scale(.25);
+  }
+
+  to {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+  }
+}

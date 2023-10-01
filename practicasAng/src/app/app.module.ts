@@ -6,28 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { BodyComponent } from './core/components/body/body.component';
-import { CoupensComponent } from './core/components/coupens/coupens.component';
-import { DashboardComponent } from './core/components/dashboard/dashboard.component';
-import { MediaComponent } from './core/components/media/media.component';
-import { PagesComponent } from './core/components/pages/pages.component';
-import { ProductsComponent } from './core/components/products/products.component';
-import { SettingsComponent } from './core/components/settings/settings.component';
-import { SideBarComponent } from './core/components/side-bar/side-bar.component';
-import { StadisticsComponent } from './core/components/stadistics/stadistics.component';
+import { UserModule } from './features/user/user.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SideBarComponent,
-    BodyComponent,
-    DashboardComponent,
-    ProductsComponent,
-    StadisticsComponent,
-    CoupensComponent,
-    PagesComponent,
-    MediaComponent,
-    SettingsComponent,
+    AppComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +19,8 @@ import { StadisticsComponent } from './core/components/stadistics/stadistics.com
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
+    UserModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

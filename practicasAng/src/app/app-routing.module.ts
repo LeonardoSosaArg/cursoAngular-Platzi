@@ -9,14 +9,15 @@ import { StadisticsComponent } from './core/components/stadistics/stadistics.com
 import { SettingsComponent } from './core/components/settings/settings.component';
 
 const routes: Routes = [
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'products', component: ProductsComponent},
-  {path: 'stadistics', component: StadisticsComponent},
-  {path: 'coupens', component: CoupensComponent},
-  {path: 'pages', component: PagesComponent},
-  {path: 'media', component: MediaComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: '', redirectTo: 'dashboard', pathMatch:'full'}
+  {
+    path: 'auth',
+    loadChildren: () => import('./features/user/user.module').then(m => m.UserModule),
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./core/core.module').then(m => m.CoreModule),
+  },
+  {path: '', redirectTo: 'auth', pathMatch:'full'}
 ];
 
 @NgModule({
