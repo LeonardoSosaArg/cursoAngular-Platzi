@@ -1,25 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-
   fb = inject(FormBuilder);
+  router = inject(Router);
   form: FormGroup;
-
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: [
-        '',
-        [Validators.required, Validators.pattern(/^(?!\s$)\s*\S/)],
-      ],
+      email: ['', [Validators.required, Validators.pattern(/^(?!\s$)\s*\S/)]],
       password: ['', [Validators.required]],
     });
   }
@@ -48,8 +44,8 @@ export class LoginComponent implements OnInit {
     return '';
   }
 
-  onLogin(){
+  onLogin() {
     console.log(this.form.value);
+    this.router.navigateByUrl('main/dashboard');
   }
-
 }

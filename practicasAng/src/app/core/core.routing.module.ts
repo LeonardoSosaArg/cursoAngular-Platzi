@@ -7,10 +7,12 @@ import { PagesComponent } from './components/pages/pages.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StadisticsComponent } from './components/stadistics/stadistics.component';
+import { CoreComponent } from './core.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: CoreComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'products', component: ProductsComponent},

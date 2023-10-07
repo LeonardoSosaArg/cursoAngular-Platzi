@@ -8,6 +8,7 @@ import { UserRoutingModule } from './user.routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RegisterComponent } from './pages/register/register.component';
     FormsModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule
   ]
 })
 export class UserModule { }
