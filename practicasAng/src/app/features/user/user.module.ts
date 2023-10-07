@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CoreModule } from 'src/app/core/core.module';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { CoreModule } from 'src/app/core/core.module';
     UserRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    MatProgressSpinnerModule
   ]
 })
 export class UserModule { }

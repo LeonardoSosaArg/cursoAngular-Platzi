@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class LoginBaseComponent {
 
-  @Input() isLoading: boolean | undefined = false;
+  @Input() isLoading: boolean | undefined = true;
   @Input() isAnimated: string = 'animatedFast fadeInRight';
 
   logoLogin = '../../../../../../assets/img/login/iicana-logo.svg';
