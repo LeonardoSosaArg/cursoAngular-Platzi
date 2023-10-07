@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -20,13 +19,10 @@ $practicasAng-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$practicasAng-theme: mat.define-light-theme((
-  color: (
-    primary: $practicasAng-primary,
-    accent: $practicasAng-accent,
-    warn: $practicasAng-warn,
-  )
-));
+$practicasAng-theme: mat.define-light-theme((color: (primary: $practicasAng-primary,
+        accent: $practicasAng-accent,
+        warn: $practicasAng-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -41,37 +37,41 @@ $practicasAng-theme: mat.define-light-theme((
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    position: relative;
-    font-family: 'Roboto', sans-serif;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    border-radius: .5rem;
-    background-color: #fff;
-    margin: 1.25rem 0 1.25rem 0;
-    box-shadow: 0 .25rem .5rem #e6edef;
+  display: flex;
+  flex-direction: column;
+  border-radius: .5rem;
+  background-color: #fff;
+  margin: 1.25rem 0 1.25rem 0;
+  box-shadow: 0 .25rem .5rem #e6edef;
 
-    &-head {
-        padding: 1rem 1.5rem;
-        border-bottom: 1px solid #edf1f7;
-        font-size: 1rem;
-        font-weight: 600;
-    }
+  &-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 600;
+  }
 
-    &-body {
-        padding: 1rem 1.5rem;
-    }
+  &-body {
+    padding: 1rem 1.5rem;
+  }
 }
 
-.bg-blue{
+.bg-blue {
   background-color: #032785 !important;
+  border: none;
+}
+
+.is-valid {
   border: none;
 }
