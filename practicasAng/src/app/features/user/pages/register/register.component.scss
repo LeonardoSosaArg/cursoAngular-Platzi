@@ -1,0 +1,13 @@
+.register{
+
+  padding-top: 1rem;
+  height: 100%;
+
+  &__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 19rem;
+  }
+
+}
