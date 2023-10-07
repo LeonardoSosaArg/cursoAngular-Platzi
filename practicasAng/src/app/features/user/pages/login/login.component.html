@@ -9,24 +9,23 @@
       <div class="input-group has-validation">
         <input formControlName="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': emailInvalid }" [class.is-valid]="!emailInvalid">
         <div *ngIf="emailInvalid" class="invalid-feedback">
-          Please choose a username.
+          {{emailInvalid}}
         </div>
       </div>
-      <!-- <div class="valid-feedback">
-        Looks good!
-      </div> -->
     </div>
   </div>
   <div class="row">
     <div class="col align-left">
       <label class="login__label">Password</label>
-      <input formControlName="password" type="password" class="form-control is-valid">
-      <!-- <div class="is-invalid-feedback">
-        Looks good!
-      </div> -->
+      <input formControlName="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': passwordInvalid }" [class.is-valid]="!passwordInvalid">
+      <div *ngIf="passwordInvalid" class="invalid-feedback">
+        {{passwordInvalid}}
+      </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary bg-blue">Iniciar sesión</button>
+</div>
+<div class="container-footer-options">
+<button type="submit" class="btn btn-primary bg-blue">Iniciar sesión</button>
   <div class="login__container-options">
     <div class="container-ask">
       <a class="container-ask" routerLink="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
