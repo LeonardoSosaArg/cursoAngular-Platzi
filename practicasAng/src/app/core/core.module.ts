@@ -9,7 +9,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { StadisticsComponent } from './components/stadistics/stadistics.component';
-import { CoreRoutingModule } from './user.routing.module';
+import { CoreRoutingModule } from './core.routing.module';
+import { CoreComponent } from './core.component';
 
 
 
@@ -23,7 +24,8 @@ import { CoreRoutingModule } from './user.routing.module';
     CoupensComponent,
     PagesComponent,
     MediaComponent,
-    SettingsComponent
+    SettingsComponent,
+    CoreComponent
   ],
   imports: [
     CommonModule,

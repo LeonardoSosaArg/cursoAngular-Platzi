@@ -9,8 +9,6 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { StadisticsComponent } from './components/stadistics/stadistics.component';
 
 const routes: Routes = [
-
-  //{path: '', redirectTo: 'dashboard', pathMatch:'full'},
   {
     path: '',
     children: [

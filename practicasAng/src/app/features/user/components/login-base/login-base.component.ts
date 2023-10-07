@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-login-base',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-base.component.scss']
 })
 export class LoginBaseComponent {
+
+  @Input() isLoading: boolean | undefined = false;
+  @Input() isAnimated: string = 'animatedFast fadeInRight';
+
+  logoLogin = '../../../../../../assets/img/login/iicana-logo.svg';
 
 }

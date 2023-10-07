@@ -8,10 +8,12 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './features/user/user.module';
 import { CoreModule } from './core/core.module';
+import { RegisterComponent } from './features/pages/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

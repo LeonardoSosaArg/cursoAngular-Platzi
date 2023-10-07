@@ -1,6 +1,42 @@
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
-<div class="content">
-  <h1>Este es un titulo</h1>
+<app-login-base>
+  <section class="login">
+  <h4>Bienvenido</h4>
+  <form [formGroup]="form" (ngSubmit)="onLogin()">
+    <div class="login__container-inputs">
+    <div class="row">
+    <div class="col align-left">
+      <label class="login__label">Email</label>
+      <div class="input-group has-validation">
+        <input formControlName="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': emailInvalid }" [class.is-valid]="!emailInvalid">
+        <div *ngIf="emailInvalid" class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+      <!-- <div class="valid-feedback">
+        Looks good!
+      </div> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col align-left">
+      <label class="login__label">Password</label>
+      <input formControlName="password" type="password" class="form-control is-valid">
+      <!-- <div class="is-invalid-feedback">
+        Looks good!
+      </div> -->
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary">Iniciar sesión</button>
+  <div class="login__container-options">
+    <div class="container-ask">
+      <a class="base-form-ask-label" routerLink="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+    <div class="container-register">
+      <a class="container-register" routerLink="/auth/register">Registrarme</a>
+    </div>
+  </div>
 </div>
+  </form>
+</section>
+</app-login-base>
+

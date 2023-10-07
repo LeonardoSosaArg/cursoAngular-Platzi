@@ -6,13 +6,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { UserRoutingModule } from './user.routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
   declarations: [
     UserComponent,
     LoginBaseComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
