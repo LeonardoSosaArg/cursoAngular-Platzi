@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Credential } from '../models/credential.model';
+import { TokenService } from 'src/app/core/services/token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ import { Credential } from '../models/credential.model';
 export class UserService {
 
   private http = inject(HttpClient);
-  public router = inject(Router);
+  private router = inject(Router);
+  private tokenService = inject(TokenService);
 
-  apiUrl = environment.authUrl;
-  apiKey = environment.apiKey;
+  private apiUrl = environment.authUrl;
+  private apiKey = environment.apiKey;
 
 
   login(credentials: Credential): Promise<any> {
