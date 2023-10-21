@@ -1,7 +1,8 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
-    <button class="logo" (click)="toogleCollapse()">A</button>
-    <div class="logo-text" *ngIf="!collapsed">Angular</div>
+    <!-- <button class="logo" (click)="toogleCollapse()">I</button> -->
+    <img src="../../../../assets/img/iicana-logo.svg" class="logo" (click)="toogleCollapse()" alt="">
+    <div class="logo-text" *ngIf="!collapsed">IICANA</div>
     <button class="btn-close" *ngIf="!collapsed" (click)="closeSideNav()">
       <i class="fal fa-times colse-icon"></i>
     </button>
