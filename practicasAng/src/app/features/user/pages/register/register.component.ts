@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
+import { Credential } from '../../models/credential.model';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
   router = inject(Router);
   userService = inject(UserService);
   form: FormGroup;
+  userData: Credential;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -65,7 +67,7 @@ export class RegisterComponent implements OnInit {
   get errorRepeatPassword() {
     const repeatPassword = this.form.get('repeatPassword');
 
-    if (repeatPassword?.touched && repeatPassword.hasError('required')) {
+    if (repeatPassword?.touched && repeatPassword.hasError('required') || repeatPassword?.hasError('required')) {
       return 'Campo requerido';
     }
 
@@ -77,6 +79,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(){
-
+    // this.userData = {
+    //   email: this.form.get('email')?.value,
+    //   password: this.form.get('password')?.value
+    // };
+    if (this.form.valid) {
+      this.userData = this.form.value;
+      this.userService.register(this.userData).then(data =>{
+        console.log('data register: ', data);
+      }).catch( error => {
+        console.error(error.error.error.message);
+      })
+    } else return //ACA IRIA EL MSG DE ERROR
   }
 }

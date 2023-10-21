@@ -6,10 +6,10 @@
       <div class="login__container-inputs">
       <div class="row">
       <div class="col align-left">
-        <label class="login__label">Email</label>
+        <!-- <label class="login__label">Email</label> -->
         <div class="input-group has-validation">
-          <input formControlName="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': emailInvalid }" [class.is-valid]="!emailInvalid">
-          <div *ngIf="emailInvalid" class="invalid-feedback">
+          <input formControlName="email" placeholder="Email" type="text" class="form-control" [ngClass]="{ 'is-invalid': emailInvalid }" [class.is-valid]="!emailInvalid">
+          <div *ngIf="emailInvalid" class="invalid-feedback animated fadeIn">
             {{emailInvalid}}
           </div>
         </div>
@@ -17,30 +17,30 @@
     </div>
     <div class="row">
       <div class="col align-left">
-        <label class="login__label">Password</label>
-        <input formControlName="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': passwordInvalid }" [class.is-valid]="!passwordInvalid">
-        <div *ngIf="passwordInvalid" class="invalid-feedback">
+        <!-- <label class="login__label">Password</label> -->
+        <input formControlName="password" placeholder="Password" type="password" class="form-control" [ngClass]="{ 'is-invalid': passwordInvalid }" [class.is-valid]="!passwordInvalid">
+        <div *ngIf="passwordInvalid" class="invalid-feedback animated fadeIn">
           {{passwordInvalid}}
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col align-left">
-        <label class="login__label">Repeat Password</label>
-        <input formControlName="repeatPassword" type="password" class="form-control" [ngClass]="{ 'is-invalid': errorRepeatPassword }" [class.is-valid]="!errorRepeatPassword">
-        <div *ngIf="errorRepeatPassword" class="invalid-feedback">
+        <!-- <label class="login__label">Repeat Password</label> -->
+        <input formControlName="repeatPassword" placeholder="Repeat Password" type="password" class="form-control" [ngClass]="{ 'is-invalid': errorRepeatPassword }" [class.is-valid]="!errorRepeatPassword && form.get('repeatPassword')!.touched">
+        <div *ngIf="errorRepeatPassword" class="invalid-feedback animated fadeIn">
           {{errorRepeatPassword}}
         </div>
       </div>
     </div>
   </div>
+  <div class="container-footer-options">
+    <div class="container-ask">
+      <a class="container-ask" routerLink="/auth/login"><i class="fal fa-long-arrow-left" style="margin-right: 3px;"></i>Volver al Login</a>
+    </div>
+    <button type="submit" class="btn btn-primary bg-blue" [disabled]="form.invalid">Registrarme</button>
+  </div>
     </form>
   </div>
-  <div class="container-footer-options">
-      <div class="container-ask">
-        <a class="container-ask" routerLink="/auth/login">Volver al Login</a>
-      </div>
-      <button type="button" (click)="onRegister()" class="btn btn-primary bg-blue">Registrarme</button>
-    </div>
   </section>
 </app-login-base>
