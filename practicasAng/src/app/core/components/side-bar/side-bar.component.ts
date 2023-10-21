@@ -4,6 +4,7 @@ import {
   HostListener,
   OnInit,
   Output,
+  inject,
 } from '@angular/core';
 import { navBarData } from './navData';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { TokenService } from '../../services/token.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -51,11 +53,13 @@ interface NavItem {
 })
 export class SideBarComponent implements OnInit {
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
+  tokenService = inject(TokenService);
+  router = inject(Router);
   navData: NavItem[] = navBarData;
   collapsed = false;
   screenWidth = 0;
 
-  constructor(private router: Router) {
+  constructor() {
     this.screenWidth = window.innerWidth;
   }
 
@@ -93,5 +97,10 @@ export class SideBarComponent implements OnInit {
       collapsed: this.collapsed,
       screenWidth: this.screenWidth,
     });
+  }
+
+  logout(){
+    this.tokenService.deleteToken();
+    this.router.navigateByUrl('auth/login');
   }
 }

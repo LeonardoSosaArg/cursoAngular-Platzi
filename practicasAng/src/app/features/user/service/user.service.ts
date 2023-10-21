@@ -22,7 +22,8 @@ export class UserService {
     return new Promise((resolve, reject) => {
       this.http.post(`${this.apiUrl}/accounts:signInWithPassword?key=${this.apiKey}`, credentials)
         .subscribe(
-          data => {
+          (data: any) => {
+            this.tokenService.saveToken(data.idToken)
             resolve(data); // Resuelve la promesa con los datos recibidos
           },
           error => {

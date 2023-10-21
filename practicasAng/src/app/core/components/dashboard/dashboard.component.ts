@@ -14,20 +14,20 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     const clicks = fromEvent(document.getElementsByClassName("card-body") , 'click');
     const greetings = clicks.pipe(mapTo('Hi on click'));
-    greetings.subscribe((data) => console.log(data));
+   // greetings.subscribe((data) => console.log(data));
     //LOS OBSERVER LOS UTILIZAMOS CUANDO QUEREMOS OBTENER ALGO ESEPCIFICO DE LOS DATOS
     //UNA VEZ QUE NOS SUSCRIBIMOS A NUESTRO OBSERVABLE .subscribe(myObserver);
     const myObserver: Observer<any> = {
       next: (x) => {
-        if (isNaN(x)) {
-          console.log(`${x} no es un numero`);
-        } else console.log(x + 10);
+        // if (isNaN(x)) {
+        //   //console.log(`${x} no es un numero`);
+        // } else //console.log(x + 10);
       },
       error: (err: any) => {
-        console.error(err);
+        //console.error(err);
       },
       complete() {
-        console.log('complete');
+        //console.log('complete');
       },
     };
 
@@ -48,9 +48,9 @@ export class DashboardComponent implements OnInit {
       .pipe(
         filter((data: any) => isNaN(data)),
         map((data: any) => {
-          if (isNaN(data)) {
-            console.log(`${data} no es un numero`);
-          } else console.log(data + 10);
+          // if (isNaN(data)) {
+          //   //console.log(`${data} no es un numero`);
+          // } else console.log(data + 10);
         })
       )
       .subscribe();
@@ -58,11 +58,11 @@ export class DashboardComponent implements OnInit {
   //OPERATORS - cadena de suscripciones
   const sourceObservable = of("World")
   .pipe(
-    map(x => `Hello ${x}!!\n`),
-    filter(x => x.includes("Hello")),
-    delay(3000),
-    tap(t => console.log(t + "TAP")),
-    scan((acc, one) => acc + one, "Holux "),
+    // map(x => `Hello ${x}!!\n`),
+    // filter(x => x.includes("Hello")),
+    // delay(3000),
+    // tap(t => console.log(t + "TAP")),
+    // scan((acc, one) => acc + one, "Holux "),
   );
 
   //sourceObservable.subscribe(console.log);
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
       }
       return acc;
     }, []),
-    tap((t) => console.log(t))
+    //tap((t) => console.log(t))
   );
 
   const otherObservable = of(...fakeData)
@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
     map(x => `Hello ${x}`)
   )
 
-  otherObservable.subscribe(console.log);
+  //otherObservable.subscribe(console.log);
 
   }//FIN ONINIT
 

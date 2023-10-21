@@ -15,5 +15,12 @@
         <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">{{item.label}}</span>
       </a>
     </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" (click)="logout()" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+        <i class="sidenav-link-icon fal fa-door-closed"></i>
+        <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">Exit</span>
+      </a>
+    </li>
   </ul>
 </div>

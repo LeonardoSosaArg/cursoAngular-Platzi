@@ -26,9 +26,9 @@ export const navBarData = [
     icon: 'fal fa-cog',
     label: 'Settings',
   },
-  {
-    routerLink: 'auth/login',
-    icon: 'fal fa-door-closed',
-    label: 'Exit',
-  }
+  // {
+  //   routerLink: 'auth/login',
+  //   icon: 'fal fa-door-closed',
+  //   label: 'Exit',
+  // }
 ];
