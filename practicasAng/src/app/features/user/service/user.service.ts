@@ -14,4 +14,18 @@ export class UserService {
   apiUrl = environment.apiUrl;
   apiKey = environment.apiKey;
 
+  login(credentials: Credential): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.post('', credentials)
+        .subscribe(
+          data => {
+            resolve(data); // Resuelve la promesa con los datos recibidos
+          },
+          error => {
+            reject(error); // Rechaza la promesa en caso de error
+          }
+        );
+    });
+  }
+
 }
