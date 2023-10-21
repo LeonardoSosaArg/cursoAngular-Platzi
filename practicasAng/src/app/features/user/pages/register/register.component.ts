@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { Credential } from '../../models/credential.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
   fb = inject(FormBuilder);
   router = inject(Router);
   userService = inject(UserService);
+  _snackBar = inject(MatSnackBar);
   form: FormGroup;
   userData: Credential;
 
@@ -88,8 +90,13 @@ export class RegisterComponent implements OnInit {
       this.userService.register(this.userData).then(data =>{
         console.log('data register: ', data);
       }).catch( error => {
+        this.showSnackBar(error.error.error.message, 'Aceptar');
         console.error(error.error.error.message);
       })
     } else return //ACA IRIA EL MSG DE ERROR
+  }
+
+  showSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ]
 })
 export class UserModule { }

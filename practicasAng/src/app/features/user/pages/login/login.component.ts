@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { Credential } from '../../models/credential.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   fb = inject(FormBuilder);
   router = inject(Router);
   userService = inject(UserService);
+  _snackBar = inject(MatSnackBar);
   form: FormGroup;
   credentials: Credential;
 
@@ -59,8 +61,13 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.credentials).then(data => {
         this.router.navigateByUrl('main/dashboard');
       }).catch( error => {
+        this.showSnackBar(error.error.error.message, 'Aceptar');
         console.error(error.error.error.message);
       })
     }
+  }
+
+  showSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

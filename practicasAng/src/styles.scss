@@ -79,3 +79,13 @@ body {
 .invalid-feedback{
   margin-top: 2px !important;
 }
+
+.blue-snackbar {
+  background: #2196F3;
+}
+
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: white;
+  --mdc-snackbar-container-color: #032785 !important;
+  --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87);
+}
